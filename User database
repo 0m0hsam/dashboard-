@@ -1,0 +1,32 @@
+<?php
+    session_start();
+    include_once ('processlog.php');
+    
+?>
+<h2>welcome to Dashboard<h2>
+<p>
+<label>Username :<?php if(isset($_SESSION['firstname'])&& !empty($_SESSION['firstname']) && isset($_SESSION['lastname'])&& !empty($_SESSION['lastname'])){
+           echo $_SESSION['firstname']."  ".$_SESSION['lastname'];}?>
+</label>
+</p>
+<p>
+<label>Login position:<?php if(isset($_SESSION['position'])&& !empty($_SESSION['position'])){
+           echo $_SESSION['position'];}?>
+</label>
+</p>
+<p>
+<label>Login email:<?php if(isset( $_SESSION['email'])&& !empty( $_SESSION['email'])){
+           echo  $_SESSION['email'];}?>
+</label>
+</p>
+
+<p>
+<label>Last Login :<?php $getlogin = date('D M Y / H: i',time());
+$_SESSION['login']=$getlogin;if(isset($_SESSION['login']) && !empty($_SESSION['login'])){
+    echo $_SESSION['login'];}
+?></label>
+</p>
+
+<p>
+<h4>Home   <a href="logout.php">Logout</a>    <a href="rest.php">Reset password</a></h4>
+</p>
